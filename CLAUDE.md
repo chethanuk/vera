@@ -108,7 +108,7 @@ This matters when multiple parameters share a type. See `tests/conformance/ch03_
 
 Read `vera/README.md` for architecture docs, module map, and design patterns.
 
-The compiler pipeline: source -> parse (`parser.py`) -> transform (`transform.py`) -> typecheck (`checker.py`) -> verify (`verifier.py`) -> compile (`codegen/` + `wasm/`) -> execute (wasmtime).
+The compiler pipeline: source -> parse (`parser.py`) -> transform (`transform.py`) -> resolve (`resolver.py`) -> typecheck (`checker.py`) -> verify (`verifier.py`) -> compile (`codegen/` + `wasm/`) -> execute (wasmtime).
 
 The language server (`vera/lsp/`, served by `vera lsp`) and the obligation core it sits on (`vera/obligations/`: reified `ProofObligation` records + the warm incremental `VerificationSession`) are documented in `LSP_SERVER.md` (user/agent surface, including the four custom proof-delta methods) and the `vera/README.md` module map (architecture). The custom methods are the agent-facing way to ask "does this edit still prove?" without round-tripping through `vera verify`.
 
@@ -207,7 +207,7 @@ This repo uses [CodeRabbit](https://coderabbit.ai) for AI code review on pull re
 
 ## Cross-platform pitfalls (test fixtures)
 
-The CI matrix tests on `{ubuntu-latest, macos-15, macos-26, windows-latest} × {3.11, 3.12, 3.13}` (12 combinations; macOS pinned explicitly to insulate from silent `macos-latest` migration — see README §Supported platforms).  When writing test fixtures, three Windows-portability rules apply — see the **Test Fixture Conventions** section in `TESTING.md` for full examples:
+The CI matrix tests on `{ubuntu-latest, macos-15, macos-26, windows-latest} × {3.11, 3.12, 3.13}` plus an advisory `ubuntu-24.04-arm` × 3.12 cell (13 combinations; macOS pinned explicitly to insulate from silent `macos-latest` migration — see README §Supported platforms).  When writing test fixtures, three Windows-portability rules apply — see the **Test Fixture Conventions** section in `TESTING.md` for full examples:
 
 - `tempfile.NamedTemporaryFile` handed off to a subprocess MUST use `delete=False` + manual `Path.unlink()` (Windows can't reopen a held file).
 - Paths embedded into Vera string literals MUST be POSIX-form (`Path(tmp_path).as_posix()`); Windows backslashes trip Vera's `\U` escape grammar.
