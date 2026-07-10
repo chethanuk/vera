@@ -3095,6 +3095,11 @@ pip install -e .
 vera run examples/hello_world.vera
 ```
 
+Install from the clone as shown — there is no *supported* `pip install vera`.
+That name on PyPI is an *unrelated* package (an ERAV citizen-science library),
+not this compiler. The planned future PyPI name is `veralang`, gated on the
+automated release workflow ([#481](https://github.com/aallan/vera/issues/481)).
+
 For agents, point your model at [SKILL.md](https://raw.githubusercontent.com/aallan/vera/main/SKILL.md). It's the complete language reference, designed to be dropped into a context window. For driving the command-line toolchain itself — checking, verifying, testing, running, and debugging Vera, plus the `builtins`/`effects`/`errors` introspection commands — see the CLI cookbook, [TOOLCHAIN.md](https://github.com/aallan/vera/blob/main/TOOLCHAIN.md).
 
 

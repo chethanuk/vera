@@ -51,7 +51,6 @@ Exit criterion: each listed drift class has a generator or a gate, and a release
 | [#528](https://github.com/aallan/vera/issues/528) | Gate the hand-edited numbers on the veralang.dev homepage against live counts (the Stage 18 landing-page audit found this class live). |
 | [#540](https://github.com/aallan/vera/issues/540) | lychee + markdownlint MD051 cross-doc anchor validation. |
 | [#481](https://github.com/aallan/vera/issues/481) | Auto-tag and auto-release on version bump — removes the forgettable manual release steps documented in [CONTRIBUTING.md](CONTRIBUTING.md). |
-| [#737](https://github.com/aallan/vera/issues/737) | Document the distribution policy (git-clone now; PyPI `veralang` publication gated on #481). |
 
 ## Stage 21 — The effect hardening sprint
 
