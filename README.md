@@ -125,6 +125,13 @@ pip install -e ".[dev]"
 
 `[dev]` includes everything (tests, linters, the language server). For a lighter install that only adds editor/agent support to the base toolchain, use `pip install -e ".[lsp]"` — see [LSP_SERVER.md](LSP_SERVER.md).
 
+> **Distribution policy.** Installing from a git clone, as above, is the
+> supported path — there is no *supported* `pip install vera`. That name on
+> PyPI is an *unrelated* package (an ERAV citizen-science library), so
+> `pip install vera` fetches different software, not this compiler. The planned
+> future PyPI name is `veralang`, gated on the automated release workflow
+> ([#481](https://github.com/aallan/vera/issues/481)).
+
 
 #### Supported platforms
 
